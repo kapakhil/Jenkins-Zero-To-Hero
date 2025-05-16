@@ -76,7 +76,7 @@ pipeline {
         stage ('Checkout') {
             steps {
                 script {
-                    git 'https://github.com/iam-veeramalla/Jenkins-Zero-To-Hero.git'
+                  sh ' git branch: 'main', url: 'https://github.com/kapakhil/Jenkins-Zero-To-Hero.git' '
                 }
             }
         }
