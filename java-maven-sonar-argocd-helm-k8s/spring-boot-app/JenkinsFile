@@ -73,11 +73,24 @@ pipeline {
     
     stages {
         
-        stage ('Checkout') {
+        // stage ('Checkout') {
+        //     steps {
+        //         script {
+        //           checkout ' git branch: 'main', url: 'https://github.com/kapakhil/Jenkins-Zero-To-Hero.git' '
+        //         }
+        //     }
+        // }
+
+        stage('Checkout') {
             steps {
-                script {
-                  sh ' git branch: 'main', url: 'https://github.com/kapakhil/Jenkins-Zero-To-Hero.git' '
-                }
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: 'main']],
+                    extensions: [],
+                    userRemoteConfigs: [
+                        [url: 'https://github.com/kapakhil/Jenkins-Zero-To-Hero.git']
+                    ]
+                ])
             }
         }
 
